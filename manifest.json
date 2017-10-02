@@ -1,0 +1,28 @@
+{
+  "author": "Erwan Ameil",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "description": "Add a button in the url bar to block or enable javascript per-site.\n",
+  "homepage_url": "https://github.com/idlewan/javascript-control",
+  "icons": {
+    "128": "js.png"
+  },
+  "manifest_version": 2,
+  "name": "Javascript Control",
+  "page_action": {
+    "browser_style": true,
+    "default_icon": "js_disabled.png",
+    "default_title": "Enable Javascript"
+  },
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "tabs"
+  ],
+  "version": "1.0"
+}
