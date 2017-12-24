@@ -1,0 +1,28 @@
+{
+  "author": "Suraj Jain",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "description": "Add a button in the url bar to block or enable javascript per-site.\n",
+  "homepage_url": "https://github.com/meetDeveloper/Quick-JS-Switcher",
+  "icons": {
+    "128": "js.png"
+  },
+  "manifest_version": 2,
+  "name": "Quick JS Switcher",
+  "page_action": {
+    "browser_style": true,
+    "default_icon": "js_disabled.png",
+    "default_title": "Enable Javascript"
+  },
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "tabs"
+  ],
+  "version": "1.2.1"
+}
