@@ -1,5 +1,5 @@
-const icon_disabled = {128: "js_disabled.png"}
-const icon_whitelisted = {128: "js.png"}
+const icon_disabled = {128: "/icons/js_disabled.png"}
+const icon_whitelisted = {128: "/icons/js.png"}
 
 function is_whitelisted(dict, host) {
     let whitelist_js = true
@@ -48,6 +48,13 @@ browser.tabs.onUpdated.addListener((id, changeInfo) => {
                 title: word + " Javascript",
                 tabId: id
             })
+
+            if (!whitelist_js) {
+                browser.tabs.executeScript(
+                    id, {
+                    file: '/background/content.js'
+                })
+            }
         })
     }
     browser.pageAction.show(id)
