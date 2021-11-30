@@ -60,7 +60,7 @@ browser.tabs.onUpdated.addListener((id, changeInfo) => {
     browser.pageAction.show(id)
 })
 
-browser.pageAction.onClicked.addListener(function(tab) {
+var toggle_javascript = function(tab) {
     let host = new URL(tab.url).hostname
     browser.storage.local.get(host).then(item => {
         let whitelist_js = is_whitelisted(item, host)
@@ -70,4 +70,25 @@ browser.pageAction.onClicked.addListener(function(tab) {
             browser.tabs.reload()
         })
     })
+}
+
+function onGot(tabs) {
+    if(tabs.length == 1) {
+        toggle_javascript(tabs[0])
+    } else {
+        console.log(`[Javascript Switcher] Error: Cannot find tab. tabs.length is ${tabs.length}`)
+    }
+}
+
+function onError(error) {
+    console.log(`[Javascript Switcher] Error: ${error}`)
+}
+
+browser.commands.onCommand.addListener(function (command) {
+  if (command === "toggle-javascript-switcher") {
+    const gettingCurrent = browser.tabs.query({currentWindow: true, active: true})
+    gettingCurrent.then( onGot, onError )
+  }
 })
+
+browser.pageAction.onClicked.addListener(toggle_javascript)
