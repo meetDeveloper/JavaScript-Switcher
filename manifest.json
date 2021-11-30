@@ -24,5 +24,13 @@
     "webRequestBlocking",
     "storage",
     "tabs"
-  ]
+  ],
+  "commands": {
+    "toggle-javascript-switcher": {
+      "suggested_key": {
+        "default": "Alt+Shift+J"
+      },
+      "description": "Toggle Javascript Switcher"
+    }
+  }
 }
